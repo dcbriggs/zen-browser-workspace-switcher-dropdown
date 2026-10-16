@@ -32,7 +32,7 @@ There is currently no way to publish new mods to the Zen Mods store, so this is 
    ```bash
    cp zen-themes.json zen-themes.json.bak
    jq --slurpfile entry /path/to/zen-themes-entry.json '. + $entry[0]' \
-     zen-themes.json.bak > zen-themes.json
+     zen-themes.json.bak >! zen-themes.json
    ```
    Then check the result with `jq . zen-themes.json`. If it prints the file without an error, the JSON is valid.
 7. **Start Zen**, open **Settings → Zen Mods**, and **toggle Workspace Dropdown off and then on again.**
