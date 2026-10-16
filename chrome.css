@@ -1,0 +1,100 @@
+/* ============================================================
+ *   Workspace switcher dropdown(up?) for Zen (built against 1.22)
+ *  - Collapsed: only the active space is shown, with its name
+ *  - Hover: the other spaces appear as a vertical list above it,
+ *    each with its emoji + name, without moving the active row
+ *  ============================================================ */
+
+:root {
+    --wsd-row-height: 30px;    /* height of each row */
+    --wsd-list-width: 170px;   /* minimum width of the expanded list */
+    --wsd-icon-font-size: 14px;
+    --wsd-name-font-size: 13px;
+    --wsd-list-bg: var(--zen-colors-tertiary, Canvas);
+    --wsd-hover-bg: color-mix(in srgb, currentColor 12%, var(--wsd-list-bg));
+}
+
+/* The container keeps the height of ONE row, so expanding never
+ *  shifts anything else in the sidebar. The list overflows upward,
+ *  drawn on top of the tab list. */
+#zen-workspaces-button {
+display: flex !important;
+flex-direction: column !important;
+justify-content: flex-end !important;  /* overflow spills upward */
+align-items: flex-start !important;
+height: var(--wsd-row-height) !important;
+min-height: var(--wsd-row-height) !important;
+overflow: visible !important;
+position: relative !important;
+z-index: 10 !important;
+}
+
+/* ---------- Every row: emoji + name, left aligned ----------
+ *  Zen caps buttons at max-width: 30px, sets an inline width when the
+ *  icons overflow, and dims inactive spaces. All of that is undone here. */
+#zen-workspaces-button > toolbarbutton {
+width: auto !important;
+max-width: none !important;
+min-width: 0 !important;
+height: var(--wsd-row-height) !important;
+min-height: var(--wsd-row-height) !important;
+flex-shrink: 0 !important;
+margin: 0 !important;
+padding-inline: 8px !important;
+justify-content: flex-start !important;
+align-items: center !important;
+gap: 8px !important;
+filter: none !important;
+opacity: 1 !important;
+}
+
+/* Zen positions the emoji absolutely in the middle of the button and,
+ *  in overflow mode, hides it (opacity 0, scale 0) until you hover.
+ *  Put it back in the normal flow and keep it visible. */
+#zen-workspaces-button > toolbarbutton .zen-workspace-icon {
+position: static !important;
+opacity: 1 !important;
+transform: none !important;
+line-height: normal !important;
+font-size: var(--wsd-icon-font-size) !important;
+flex-shrink: 0 !important;
+}
+
+/* The name. In overflow mode Zen uses ::after to draw a 4px dot in
+ *  place of the icon, so every property it sets is overridden here. */
+#zen-workspaces-button > toolbarbutton::after {
+content: attr(tooltiptext) !important;
+position: static !important;
+width: auto !important;
+height: auto !important;
+background: none !important;
+border-radius: 0 !important;
+transform: none !important;
+filter: none !important;
+opacity: 1 !important;
+white-space: nowrap !important;
+font-size: var(--wsd-name-font-size) !important;
+}
+
+/* Pin the active space to the bottom row, so the row under your
+ *  cursor doesn't move when the list opens. */
+#zen-workspaces-button > toolbarbutton[active="true"] {
+order: 99 !important;
+}
+
+/* ---------- Collapsed ---------- */
+#zen-workspaces-button > toolbarbutton:not([active="true"]) {
+display: none !important;
+}
+
+/* ---------- Expanded (hover) ---------- */
+#zen-workspaces-button:hover > toolbarbutton {
+display: flex !important;
+min-width: var(--wsd-list-width) !important;
+border-radius: 0px !important;
+background-color: var(--wsd-list-bg) !important;
+}
+
+#zen-workspaces-button:hover > toolbarbutton:hover {
+background-color: var(--wsd-hover-bg) !important;
+}
