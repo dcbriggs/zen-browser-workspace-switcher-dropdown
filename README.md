@@ -28,7 +28,7 @@ There is currently no way to publish new mods to the Zen Mods store, so this is 
    ```
 4. **Copy Mod in.** Copy `chrome.css` in this repo into the folder you just created
 5. **Back up `zen-themes.json`** in your profile folder. If Zen finds invalid JSON in this file, it resets it to empty, which removes all your installed mods.
-6. **Register the mod.** Add the entry from [`zen-themes-entry.json`](zen-themes-entry.json) to the top-level object in `zen-themes.json`. With `jq`:
+6. **Register the mod.** Add the entry from [`zen-themes-entry.json`](zen-themes-entry.json) at the root of this repo to the top-level object in `zen-themes.json`. With `jq`:
    ```bash
    cp zen-themes.json zen-themes.json.bak
    jq --slurpfile entry /path/to/zen-themes-entry.json '. + $entry[0]' \
