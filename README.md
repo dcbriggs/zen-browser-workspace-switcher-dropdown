@@ -1,4 +1,4 @@
-# Zen Browser Workspace Dropdown
+# Zen Browser Workspace Switcher Dropdown
 
 A [Zen Browser](https://zen-browser.app) mod that replaces the cramped row of workspace icons at the bottom of the sidebar with a single active-space button that expands into a list on hover.
 
