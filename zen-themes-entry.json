@@ -1,0 +1,11 @@
+{
+  "18ab34db-0d6d-4126-bbd1-06e9eae4b864": {
+    "id": "18ab34db-0d6d-4126-bbd1-06e9eae4b864",
+    "name": "Workspace Dropdown",
+    "description": "Collapses the workspace icons into a hover list with names.",
+    "author": "dcbriggs",
+    "version": "1.0.0",
+    "homepage": "https://github.com/dcbriggs/zen-browser-workspace-switcher-dropdown",
+    "enabled": true
+  }
+}
