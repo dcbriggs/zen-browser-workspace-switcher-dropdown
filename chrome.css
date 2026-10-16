@@ -27,6 +27,7 @@ min-height: var(--wsd-row-height) !important;
 overflow: visible !important;
 position: relative !important;
 z-index: 10 !important;
+gap: 0 !important;
 }
 
 /* ---------- Every row: emoji + name, left aligned ----------
