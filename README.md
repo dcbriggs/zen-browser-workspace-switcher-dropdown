@@ -12,7 +12,7 @@ Zen normally shrinks the workspace icons once they run out of room, and past a c
 
 ## Compatibility
 
-Last tested on **Zen 1.22** on Linux.
+Last tested on **Zen 1.23** on Linux.
 
 This mod is pure CSS, but it overrides Zen's own workspace styling, so a Zen update can break it. See [How it works](#how-it-works) for the internals it depends on. If it breaks after an update, please open an issue with your Zen version.
 
